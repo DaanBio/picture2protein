@@ -22,7 +22,7 @@ if uploaded_file is not None:
     st.image(img)
     width, height = img.size
     ratio = width / height
-    new_width = 30
+    #new_width = 30
     new_height = int(new_width / ratio)
     img = img.resize((new_width, new_height), Image.ANTIALIAS)
     width, height = img.size
