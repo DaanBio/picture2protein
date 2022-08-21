@@ -13,7 +13,7 @@ def load_image(uploaded_file):
 
 st.title("Picture2Protein")
 st.subheader("Please upload your picture below")
-st.write("This program allows you to turn images in amino acid sequences. Have you ever wondered what you look like as a protein? Use this page together with the alphafold collab notebook to find out!")
+st.write("This program allows you to turn images in amino acid sequences. Have you ever wondered what you look like as a protein? Use this page together with the [alphafold collab notebook](https://colab.research.google.com/github/deepmind/alphafold/blob/main/notebooks/AlphaFold.ipynb) to find out!")
 uploaded_file = st.file_uploader("Upload Files", type=['png', 'jpeg'])
 if uploaded_file is not None:
     file_details = {"FileName": uploaded_file.name, "FileType": uploaded_file.type, "FileSize": uploaded_file.size}
@@ -27,7 +27,10 @@ if uploaded_file is not None:
     width, height = img.size
     Number_of_AA = (width * height) + height
     st.subheader(f"The amount of amino acids in your sequence is {Number_of_AA}")
-
+    if Number_of_AA>750:
+        st.write("Warning: The amount of aminoacids in your sequence is large, it can take very long times for alphafold to make a prediction. Consider changing the image width.")
+    else:
+        pass	
     img = img.convert('L')
     pixel_data = np.array(img)
     amino_acid = []
