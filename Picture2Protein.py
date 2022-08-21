@@ -14,6 +14,7 @@ def load_image(uploaded_file):
 st.title("Picture2Protein")
 st.subheader("Please upload your picture below")
 st.write("This program allows you to turn images in amino acid sequences. Have you ever wondered what you look like as a protein? Use this page together with the [alphafold collab notebook](https://colab.research.google.com/github/deepmind/alphafold/blob/main/notebooks/AlphaFold.ipynb) to find out!")
+new_width=st.number_input("input the desired width of your image", min_value=5, max_value=100, value=20, step=1, on_change=None)
 uploaded_file = st.file_uploader("Upload Files", type=['png', 'jpeg'])
 if uploaded_file is not None:
     file_details = {"FileName": uploaded_file.name, "FileType": uploaded_file.type, "FileSize": uploaded_file.size}
